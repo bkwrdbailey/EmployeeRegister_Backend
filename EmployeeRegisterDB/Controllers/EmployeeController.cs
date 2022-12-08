@@ -33,16 +33,16 @@ public class EmployeeController
         return await _dataHandlingService.addNewEmployeeRecord(newEmployee);
     }
 
-    [HttpPost("/email/manager")]
-    public async Task<bool> emailEmployeeReport([FromBody] EmployeeTabularData[] employeeReports)
-    {
-        if (await _dataHandlingService.addNewAttendanceRecords(employeeReports))
-        {
-            return await _emailService.sendEmailReport(employeeReports);
-        }
-        else
-        {
-            return false;
-        }
-    }
+    // [HttpPost("/email/manager")]
+    // public async Task<bool> emailEmployeeReport([FromBody] EmployeeTabularData[] employeeReports)
+    // {
+    //     if (await _dataHandlingService.addNewAttendanceRecords(employeeReports))
+    //     {
+    //         return await _emailService.sendEmailReport(employeeReports);
+    //     }
+    //     else
+    //     {
+    //         return false;
+    //     }
+    // }
 }
