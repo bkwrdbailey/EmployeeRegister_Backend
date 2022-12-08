@@ -15,22 +15,22 @@ public class EmployeeDatabase : IEmployeeDatabase
     public async Task<string> getEmployeeNameViaId(int employeeId)
     {
         var database = client.GetDatabase("EmployeeRegistrar");
-        var employeesCollection = database.GetCollection<Employee>("Employee");
-        var filter = Builders<Employee>.Filter.Eq(e => e.empId, employeeId);
+        var employeesCollection = database.GetCollection<EmployeeDB>("Employee");
+        var filter = Builders<EmployeeDB>.Filter.Eq(e => e.empId, employeeId);
 
-        var employeeData = await employeesCollection.Find<Employee>(filter).FirstOrDefaultAsync();
+        var employeeData = await employeesCollection.Find<EmployeeDB>(filter).FirstOrDefaultAsync();
 
         return employeeData.name ?? "";
     }
 
-    public async Task<bool> createEmployeeRecord(Employee newEmployee)
+    public async Task<bool> createEmployeeRecord(EmployeeDB newEmployee)
     {
         var database = client.GetDatabase("EmployeeRegistrar");
-        var employeesCollection = database.GetCollection<Employee>("Employee");
+        var employeesCollection = database.GetCollection<EmployeeDB>("Employee");
 
-        var checkData = await employeesCollection.Find<Employee>(Builders<Employee>.Filter.Eq(e => e.empId, newEmployee.empId)).FirstOrDefaultAsync();
+        var checkData = await employeesCollection.Find<EmployeeDB>(Builders<EmployeeDB>.Filter.Eq(e => e.empId, newEmployee.empId)).FirstOrDefaultAsync();
 
-        if (checkData != null)
+        if (checkData == null)
         {
             await employeesCollection.InsertOneAsync(newEmployee);
             return true;
@@ -66,5 +66,13 @@ public class EmployeeDatabase : IEmployeeDatabase
         var managersCollection = database.GetCollection<Manager>("Manager");
 
         return await managersCollection.Find<Manager>(Builders<Manager>.Filter.Eq(m => m.managerId, managerId)).FirstOrDefaultAsync();
+    }
+
+    public async Task<Manager> getManagerRecordByName(string managerName)
+    {
+        var database = client.GetDatabase("EmployeeRegistrar");
+        var managersCollection = database.GetCollection<Manager>("Manager");
+
+        return await managersCollection.Find<Manager>(Builders<Manager>.Filter.Eq(m => m.name, managerName)).FirstOrDefaultAsync();
     }
 }

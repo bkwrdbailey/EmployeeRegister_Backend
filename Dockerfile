@@ -5,7 +5,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN dotnet clean EmployeeRegister_Backend.sln
+RUN dotnet clean ./EmployeeRegister_Backend.sln
 RUN dotnet publish ./EmployeeRegisterDB --configuration Release -o ./publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS run
