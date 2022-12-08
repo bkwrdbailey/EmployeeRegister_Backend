@@ -11,10 +11,10 @@ public class EmailService : IEmailService
         _db = db;
     }
 
-    public async Task<bool> sendEmailReport(EmployeeTabularData[] employeeReport)
-    {
-        // Acquire manager email
-        // Email their employee attendance record to them
-        // Return true boolean value if all emails were sent successfully
-    }
+    // public async Task<bool> sendEmailReport(EmployeeTabularData[] employeeReport)
+    // {
+    //     // Acquire manager email
+    //     // Email their employee attendance record to them
+    //     // Return true boolean value if all emails were sent successfully
+    // }
 }

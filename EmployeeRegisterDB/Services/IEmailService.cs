@@ -4,5 +4,5 @@ namespace EmployeeRegisterDB.Services;
 
 public interface IEmailService
 {
-    Task<bool> sendEmailReport(EmployeeTabularData[] employeeReport);
+    // Task<bool> sendEmailReport(EmployeeTabularData[] employeeReport);
 }

@@ -1,9 +1,11 @@
-namespace EmployeeRegisterDB.Models;
+using MongoDB.Bson;
 
+namespace EmployeeRegisterDB.Models;
 
 public class Attendance
 {
-    public int employeeId { get; set; }
+    public ObjectId id { get; set; }
+    public int empId { get; set; }
     public string? attendanceCode { get; set; }
     public DateTime dateCreated { get; set; }
     public string? leaveType { get; set; }

@@ -29,7 +29,7 @@ public class DataHandlingService : IDataHandlingService
         {
             Attendance newAttendanceRecord = new Attendance();
 
-            newAttendanceRecord.employeeId = record.empId;
+            newAttendanceRecord.empId = record.empId;
             newAttendanceRecord.attendanceCode = record.attendanceCode;
             newAttendanceRecord.leaveType = record.leaveType;
             newAttendanceRecord.dateCreated = record.date;
