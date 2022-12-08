@@ -15,7 +15,14 @@ public class DataHandlingService : IDataHandlingService
     {
         Manager checkManager = await _db.getManagerRecordById(managerId);
 
-        return false;
+        if (checkManager == null)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     public async Task<bool> addNewEmployeeRecord(Employee newEmployee)
@@ -53,7 +60,7 @@ public class DataHandlingService : IDataHandlingService
         }
         else
         {
-            return "";
+            return "DNE";
         }
     }
 }
