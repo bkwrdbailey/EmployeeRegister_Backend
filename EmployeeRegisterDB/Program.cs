@@ -1,5 +1,6 @@
 using EmployeeRegisterDB.Services;
 using EmployeeRegisterDB.DatabaseCalls;
+using EmployeeRegisterDB.Configuration;
 
 var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +26,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IDataHandlingService, DataHandlingService>();
 builder.Services.AddScoped<IEmployeeDatabase>(ctx => new EmployeeDatabase(builder.Configuration.GetConnectionString("MongoDB")));
+builder.Services.Configure<EmailInfo>(builder.Configuration.GetSection(nameof(EmailInfo)));
 
 var app = builder.Build();
 

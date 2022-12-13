@@ -90,11 +90,11 @@ public class DataHandlingService : IDataHandlingService
 
     public async Task<string> getEmployeeName(int employeeId)
     {
-        string nameCheck = await _db.getEmployeeNameViaId(employeeId);
-
-        if (nameCheck != null)
+        EmployeeDB checkEmployee = await _db.getEmployeeNameViaId(employeeId);
+        
+        if (checkEmployee != null)
         {
-            return nameCheck;
+            return checkEmployee.name;
         }
         else
         {

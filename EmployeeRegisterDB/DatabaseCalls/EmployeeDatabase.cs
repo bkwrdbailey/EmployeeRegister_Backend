@@ -12,15 +12,15 @@ public class EmployeeDatabase : IEmployeeDatabase
         client = new MongoClient(connectionString);
     }
 
-    public async Task<string> getEmployeeNameViaId(int employeeId)
+    public async Task<EmployeeDB> getEmployeeNameViaId(int employeeId)
     {
         var database = client.GetDatabase("EmployeeRegistrar");
         var employeesCollection = database.GetCollection<EmployeeDB>("Employee");
         var filter = Builders<EmployeeDB>.Filter.Eq(e => e.empId, employeeId);
 
-        var employeeData = await employeesCollection.Find<EmployeeDB>(filter).FirstOrDefaultAsync();
+        var employeeData = await employeesCollection.Find<EmployeeDB>(filter).FirstOrDefaultAsync() ?? null;
 
-        return employeeData.name ?? "";
+        return employeeData;
     }
 
     public async Task<bool> createEmployeeRecord(EmployeeDB newEmployee)
