@@ -28,7 +28,7 @@ public class EmailService : IEmailService
 
     public async Task<bool> sendEmailTest()
     {
-        // baileybartontest@gmail.com for testing email sending
+        // baileybartontest@gmail.com for testing email retrieval
 
         MimeMessage message = new MimeMessage();
 
@@ -36,7 +36,7 @@ public class EmailService : IEmailService
 
         message.To.Add(MailboxAddress.Parse("baileybartontest@gmail.com"));
 
-        message.Subject = "Wuuf!.";
+        message.Subject = "Employee Attendance";
 
         message.Body = new TextPart("plain")
         {
