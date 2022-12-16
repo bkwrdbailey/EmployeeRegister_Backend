@@ -9,7 +9,11 @@ public class EmployeeDatabase : IEmployeeDatabase
     private readonly MongoClient client;
     public EmployeeDatabase(string connectionString)
     {
-        client = new MongoClient(connectionString);
+        MongoClientSettings settings = MongoClientSettings.FromUrl(
+            new MongoUrl(connectionString)
+        );
+        settings.SslSettings = new SslSettings() { EnabledSslProtocols = System.Security.Authentication.SslProtocols.Tls12 };
+        client = new MongoClient(settings);
     }
 
     public async Task<EmployeeDB> getEmployeeNameViaId(int employeeId)
