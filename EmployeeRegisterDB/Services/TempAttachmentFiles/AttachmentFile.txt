@@ -1,2 +1,3 @@
-1111 tucker rich 12/19/2022 present N/A 
-1234 bill schafer 12/19/2022 absent sick 
+1234 bill schafer 12/12/2022 absent planned 
+1111 tucker rich 12/12/2022 present N/A 
+3003 daniel reed 12/12/2022 present N/A 

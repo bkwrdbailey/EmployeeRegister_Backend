@@ -38,10 +38,10 @@ public class EmailService : IEmailService
 
         var attachment = new MimePart("image", "gif")
         {
-            Content = new MimeContent(File.OpenRead("Services/TempAttachmentFiles/AttachmentFile.txt"), ContentEncoding.Default),
+            Content = new MimeContent(File.OpenRead("AttachmentFile.txt"), ContentEncoding.Default),
             ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
             ContentTransferEncoding = ContentEncoding.Base64,
-            FileName = Path.GetFileName("Services/TempAttachmentFiles/AttachmentFile.txt")
+            FileName = Path.GetFileName("AttachmentFile.txt")
         };
 
         var multipart = new Multipart("mixed");
@@ -83,7 +83,7 @@ public class EmailService : IEmailService
             {
                 text += $"{employee.empId} {employee.name} {employee.date} {employee.attendanceCode} {employee.leaveType} \n";
             }
-            await File.WriteAllTextAsync("Services/TempAttachmentFiles/AttachmentFile.txt", text);
+            await File.WriteAllTextAsync("AttachmentFile.txt", text);
         }
         catch (Exception ex)
         {
