@@ -15,7 +15,7 @@ public class EmailController
         _dataHandlingService = dataHandlingService;
     }
 
-    [HttpPost("/email/manager")]
+    [HttpPut("/email/manager")]
     public async Task<bool> emailEmployeeReport([FromBody] EmployeeTabularData[] employeeReports)
     {
         if (await _dataHandlingService.addNewAttendanceRecords(employeeReports))
