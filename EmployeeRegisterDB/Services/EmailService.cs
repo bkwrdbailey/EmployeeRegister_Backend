@@ -78,7 +78,7 @@ public class EmailService : IEmailService
     {
         try
         {
-            string text = "EMPLOYEE ID | NAME | REPORTED DATE | ATTENDANCE CODE | LEAVE TYPE \n";
+            string text = "EMPLOYEE ID | NAME | REPORTED DATE | ATTENDANCE CODE | LEAVE TYPE \n \n";
             foreach (EmployeeTabularData employee in employeeReport)
             {
                 text += $"{employee.empId} | {employee.name} | {employee.date} | {employee.attendanceCode} | {employee.leaveType} \n";
