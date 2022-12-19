@@ -26,7 +26,7 @@ public class EmployeeController
     }
 
     [HttpGet("/check/{employeeId}")]
-    public async Task<string> checkEmployeeId(int employeeId)
+    public async Task<Employee> checkEmployeeId(int employeeId)
     {
         return await _dataHandlingService.getEmployeeName(employeeId);
     }

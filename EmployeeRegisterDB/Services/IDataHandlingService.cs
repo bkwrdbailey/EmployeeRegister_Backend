@@ -8,5 +8,5 @@ public interface IDataHandlingService
     Task<bool> checkManagerData(int managerId, string managerName);
     Task<bool> addNewEmployeeRecord(Employee newEmployee);
     Task<bool> addNewAttendanceRecords(EmployeeTabularData[] employeeAttendanceRecords);
-    Task<string> getEmployeeName(int employeeId);
+    Task<Employee> getEmployeeName(int employeeId);
 }

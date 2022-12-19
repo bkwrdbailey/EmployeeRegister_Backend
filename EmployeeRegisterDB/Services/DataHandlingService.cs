@@ -88,17 +88,23 @@ public class DataHandlingService : IDataHandlingService
         return true;
     }
 
-    public async Task<string> getEmployeeName(int employeeId)
+    public async Task<Employee> getEmployeeName(int employeeId)
     {
         EmployeeDB checkEmployee = await _db.getEmployeeNameViaId(employeeId);
         
         if (checkEmployee != null)
         {
-            return checkEmployee.name;
+            Employee frontendEmployee = new Employee();
+
+            frontendEmployee.name = checkEmployee.name;
+            return frontendEmployee;
         }
         else
         {
-            return "DNE";
+            Employee frontendEmployee = new Employee();
+
+            frontendEmployee.name = "DNE";
+            return frontendEmployee;
         }
     }
 }
