@@ -54,16 +54,7 @@ public class EmployeeDatabase : IEmployeeDatabase
 
         await attendancesCollection.InsertOneAsync(newAttendance);
         
-        Console.WriteLine(checkData);
-        Console.WriteLine(newAttendance);
-        if (checkData is null)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return true;
     }
 
     public async Task<Manager> getManagerRecordById(int managerId)
