@@ -7,28 +7,24 @@ namespace EmployeeRegisterDB.Controllers;
 [ApiController]
 public class EmailController
 {
-    private readonly IEmailService _service;
-    public EmailController(IEmailService service)
+    private readonly IDataHandlingService _dataHandlingService;
+    private readonly IEmailService _emailService;
+    public EmailController(IEmailService emailService, IDataHandlingService dataHandlingService)
     {
-        _service = service;
+        _emailService = emailService;
+        _dataHandlingService = dataHandlingService;
     }
 
-    // [HttpPost("/email/manager")]
-    // public async Task<bool> emailEmployeeReport([FromBody] EmployeeTabularData[] employeeReports)
-    // {
-    //     if (await _dataHandlingService.addNewAttendanceRecords(employeeReports))
-    //     {
-    //         return await _emailService.sendEmailReport(employeeReports);
-    //     }
-    //     else
-    //     {
-    //         return false;
-    //     }
-    // }
-
-    [HttpGet("/email/test")]
-    public async Task<bool> emailTest()
+    [HttpPost("/email/manager")]
+    public async Task<bool> emailEmployeeReport([FromBody] EmployeeTabularData[] employeeReports)
     {
-        return await _service.sendEmailTest();
+        if (await _dataHandlingService.addNewAttendanceRecords(employeeReports))
+        {
+            return await _emailService.sendEmailReport(employeeReports);
+        }
+        else
+        {
+            return false;
+        }
     }
 }
