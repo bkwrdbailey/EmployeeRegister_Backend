@@ -18,13 +18,7 @@ public class EmailController
     [HttpPut("/email/manager")]
     public async Task<bool> emailEmployeeReport([FromBody] EmployeeTabularData[] employeeReports)
     {
-        if (await _dataHandlingService.addNewAttendanceRecords(employeeReports))
-        {
-            return await _emailService.sendEmailReport(employeeReports);
-        }
-        else
-        {
-            return false;
-        }
+        await _dataHandlingService.addNewAttendanceRecords(employeeReports);
+        return await _emailService.sendEmailReport(employeeReports);
     }
 }
