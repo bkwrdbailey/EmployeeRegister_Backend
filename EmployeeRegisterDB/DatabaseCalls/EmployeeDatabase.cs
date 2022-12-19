@@ -53,8 +53,10 @@ public class EmployeeDatabase : IEmployeeDatabase
         Attendance checkData = await attendancesCollection.Find<Attendance>(Builders<Attendance>.Filter.Eq(a => a.dateCreated, newAttendance.dateCreated)).FirstOrDefaultAsync();
 
         await attendancesCollection.InsertOneAsync(newAttendance);
-
-        if (checkData.dateCreated == newAttendance.dateCreated && checkData.empId == newAttendance.empId)
+        
+        Console.WriteLine(checkData);
+        Console.WriteLine(newAttendance);
+        if (checkData is null)
         {
             return true;
         }

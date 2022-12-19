@@ -20,7 +20,7 @@ public class EmailController
     {
         if (await _dataHandlingService.addNewAttendanceRecords(employeeReports))
         {
-            return true;
+            return await _emailService.sendEmailReport(employeeReports);
         }
         else
         {
