@@ -78,10 +78,10 @@ public class EmailService : IEmailService
     {
         try
         {
-            string text = "";
+            string text = "EMPLOYEE ID | NAME | REPORTED DATE | ATTENDANCE CODE | LEAVE TYPE";
             foreach (EmployeeTabularData employee in employeeReport)
             {
-                text += $"{employee.empId} {employee.name} {employee.date} {employee.attendanceCode} {employee.leaveType} \n";
+                text += $"{employee.empId} | {employee.name} | {employee.date} | {employee.attendanceCode} | {employee.leaveType} \n";
             }
             await File.WriteAllTextAsync("AttachmentFile.txt", text);
         }
