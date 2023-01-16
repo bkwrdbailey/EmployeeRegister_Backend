@@ -51,7 +51,7 @@ jobs:
       - name: Test
         run: | 
           cd ./EmployeeRegisterDB-Tests
-          dotnet test --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+          dotnet test --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover /p:ExcludeByFile="**/Program.cs"
           
       - name: Build and analyze
         env:
