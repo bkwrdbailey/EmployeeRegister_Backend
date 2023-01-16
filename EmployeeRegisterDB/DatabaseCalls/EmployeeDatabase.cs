@@ -50,8 +50,6 @@ public class EmployeeDatabase : IEmployeeDatabase
         var database = client.GetDatabase("EmployeeRegistrar");
         var attendancesCollection = database.GetCollection<Attendance>("Attendance");
 
-        Attendance checkData = await attendancesCollection.Find<Attendance>(Builders<Attendance>.Filter.Eq(a => a.dateCreated, newAttendance.dateCreated)).FirstOrDefaultAsync();
-
         await attendancesCollection.InsertOneAsync(newAttendance);
         
         return true;

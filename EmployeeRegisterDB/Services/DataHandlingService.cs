@@ -79,10 +79,7 @@ public class DataHandlingService : IDataHandlingService
             newAttendanceRecord.leaveType = record.leaveType;
             newAttendanceRecord.dateCreated = record.date;
 
-            if (!(await _db.createAttendanceRecord(newAttendanceRecord)))
-            {
-                return false;
-            }
+            await _db.createAttendanceRecord(newAttendanceRecord);
         }
 
         return true;
