@@ -1,5 +1,8 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace EmployeeRegisterDB.Configuration;
 
+[ExcludeFromCodeCoverage]
 public class EmailInfo
 {
 public string? Username { get; set; }
