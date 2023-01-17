@@ -32,9 +32,10 @@ public class EmployeeDatabase : IEmployeeDatabase
         var database = client.GetDatabase("EmployeeRegistrar");
         var employeesCollection = database.GetCollection<EmployeeDB>("Employee");
 
-        var checkData = await employeesCollection.Find<EmployeeDB>(Builders<EmployeeDB>.Filter.Eq(e => e.empId, newEmployee.empId)).FirstOrDefaultAsync();
+        var checkId = await employeesCollection.Find<EmployeeDB>(Builders<EmployeeDB>.Filter.Eq(e => e.empId, newEmployee.empId)).FirstOrDefaultAsync();
+        var checkName = await employeesCollection.Find<EmployeeDB>(Builders<EmployeeDB>.Filter.Eq(e => e.name, newEmployee.name)).FirstOrDefaultAsync();
 
-        if (checkData == null)
+        if (checkId == null && checkName == null)
         {
             await employeesCollection.InsertOneAsync(newEmployee);
             return true;
